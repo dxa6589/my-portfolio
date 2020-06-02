@@ -1,9 +1,23 @@
+body { 
+  background-color: rgb(217, 188, 221)/*rgb(182, 253, 255)*/;
+}
+
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  width: 70%;
+  font-family: "Merriweather", Georgia, serif;
+  padding-left: 1em;
+  padding-right: 1em;
+  color: navy;
 }
 
 #greeting-container {
   margin-top: 20px;
+}
+
+#me {
+  float:right;
+  width:30%;
+  height: auto;
 }
