@@ -26,3 +26,16 @@ function addRandomQuote() {
   const quoteContainer = document.getElementById('quote-container');
   quoteContainer.innerText = quote;
 }
+
+function expand(num, section){
+    var coll = document.getElementsByClassName("collapsible")[num];
+    var content = document.getElementById(section);
+    
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        coll.style.transform = "rotate(180deg)";
+    } else {
+        content.style.display = "block";
+        coll.style.transform = "rotate(0deg)";
+    }
+}

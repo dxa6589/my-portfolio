@@ -1,5 +1,5 @@
 body { 
-  background-color: rgb(217, 188, 221)/*rgb(182, 253, 255)*/;
+  background-color: rgba(217, 188, 221, 0.45)/*rgb(182, 253, 255)*/;
 }
 
 #content {
@@ -16,8 +16,92 @@ body {
   margin-top: 20px;
 }
 
-#me {
+#me{
   float:right;
   width:30%;
   height: auto;
+}
+
+h2 {
+
+}
+
+.section-head {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.collapsible {
+    width: 10px;
+    padding: 10px;
+    border: 2px solid #555555;
+    border-radius: 20%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black;
+    background: navy url("./images/expand-white.png") no-repeat center;
+    background-size: contain;
+}
+.collapsible:hover{
+    color: white;
+    background: #FFFFFF url("./images/expand.png");
+    background-size: contain;
+}
+
+#portfolio img{
+    position: center;
+    width:500px;
+}
+
+.gallery{
+    margin: 10px;
+    float: left;
+    width: 30%;
+}
+.gallery a img{
+    width: 95%;
+    /*
+    height: 30%;
+    max-width: 10000px;*/
+    border: 5px solid navy;
+    cursor: pointer;
+}
+.gallery a img:hover{
+    border-color: blue;
+}
+
+.desc, figcaption{
+    text-align: center;
+    text-decoration: none;
+    color: navy;
+    font-size: small;
+    font-style: italic;
+    }
+
+figcaption{
+    width: 500px;
+}
+
+#lin, #ghub{
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    color:transparent;
+    border-radius: 20%;
+    height: 30px;
+    padding: 10px;
+    /*
+    border: 2px solid #555555;*/
+}
+
+#lin{
+    background: white url("./images/linkedin.png");
+    background-size: contain;
+    width: 100px;
+}
+
+#ghub{
+    background: white url("./images/github.png");
+    background-size: contain;
+    width: 95px;
 }
