@@ -1,18 +1,175 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Dolapo's Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <h1>My Portfolio</h1>
+            <h2>About Me</h2>
+            <img id="me" src="./images/bitmoji.png">
+            <p>
+                My name is Oluwadolapo "Dolapo" Atobiloye. I am a second-year 
+                Bachelor's of Science student studying Computer Science at 
+                Rochester Insitute of Technology with a minor in Game Design 
+                & Development and an Immersion in Theater Arts.
+            </p>
+            <p>
+                I have experience as a Software Engineering intern in Terragon 
+                Group located in Lagos Nigeria. I have also completed multiple 
+                computer science and web design courses in my time at RIT.
+            </p>
+            <p>
+                I am a huge fan of musical theater and while I'm not much of a 
+                singer, I consider myself a budding actress. I originated the 
+                role of Yashira in the origianl play AI-Pollo by David Munnell.
+                I also performed as #8 in RIT performing arts scholarship's 
+                production of "The Wolves". I try to abide by the motto "Live
+                while you can", which basically means try everything and is how 
+                I got into musicals in the first place.
+            </p>
+            <p>
+                You can find me on LinkedIn and GitHub through the links below:
+            </p>
+            <button id="lin" onclick="window.location.href='https://www.linkedin.com/in/dolapo-atobiloye'"></button>
+            <button id="ghub" onclick="window.location.href='https://www.github.com/dxa6589'"></button>
+
+            <p>Click here to get a message in a random language:</p>
+            <button onclick="addRandomQuote()">Hello</button>
+            <div id="quote-container"></div>
+
+            <h2>
+                <div>Professional Portfolio</div>
+                <!--button class="collapsible" onclick="expand(0, 'portfolio');" style="width:10px;"></button-->
+            </h2>
+            <div id="portfolio">
+                <figure href="./images/miles.jpg">
+                    <img src="./images/miles.jpg">
+                    <figcaption>A Miles Morales screensaver I designed using photoshop</figcaption>
+                </figure>
+                <strong>Project Prius</strong> - Terragon Intership
+                <ul>
+                    <li>
+                        A chatbot that acts a avirtual text partner
+                    </li>
+                    <li>
+                        I worked on the backend and implemented the training and response feature 
+                        using the chatbot.io Python library.
+                    </li>
+                </ul>
+                <strong>Firm Fatale</strong> — WicHacks2019
+                <ul>
+                    <li>
+                        A mobile web application designed to act like an online support system for 
+                        women in male-dominated fields made using Javascript, Node.JS, and Google APIs
+                        made available through the hackathon.
+                    </li>
+                    <li>
+                        I designed front-end of project demo using UxPin and served a research role in my
+                        team. We received the award for Most Financially Viable Hack.
+                    </li>
+                </ul>
+                <strong>RecipeBot</strong> — WicHacks2020
+                <ul>
+                    <li>
+                        A web-based chatbot designed to lead users through the cooking process, using Python, 
+                        HTML/CSS, Javascript and Google APIs.
+                    </li>
+                    <li>
+                        I designed the front-end of the site  using HTML/CSS technologies and Javascript. For the idea
+                        to implement audio response features with a Google Home Minit, we received the award for Best
+                        Hardware Hack.
+                    </li>
+                </ul>
+            </div>
+
+            <h2>Relevant Experience</h2>
+            <div id="experience">
+                <strong>Terragon Group</strong>, Lagos, Nigeria— Software Engineering Intern
+                JULY 2019 - AUGUST 2019
+                <ul>
+                    <li>
+                        Worked on the backend of the Customer Database Platform project.
+                    </li>
+                    <li>
+                        Developed an interactive ChatBot, Project Prius, with a team of interns.
+                    </li>
+                </ul>
+                <strong>NURHI(Nigerian Urban Reproductive Health Initiative</strong>, Lagos, Nigeria— Intern    
+                SEPTEMBER 2017 - DECEMBER 2017
+                <ul>
+                    <li>
+                        Participated in strategy design workshops and a formative research study.
+                    </li>
+                    <li>
+                        Compiled highly readable reports for workshops, conferences, and meetings.
+                    </li>
+                </ul>
+            </div>
+
+            <h2>Organizations and Extra-curricular Activities</h2>
+            <div id="organizations">
+                <ul>
+                    <li>
+                        Organization of African Students (OAS) Secretary for 2019/2020 school year
+                    </li>
+                    <li>
+                        RIT Department of Computer Science Computer Science Ambassador
+                    </li>
+                    <li>
+                        Women In Computing (WiC) General body member
+                    </li>
+                    <li>
+                        Women of Excellence Supporting STEM (WOESS) General body member
+                    </li>
+                    <li>
+                        Lagoon High School Book Club President for 2016/2017 school year
+                    </li>
+                </ul>
+            </div>
+
+            <h2>Gallery</h2>
+            <div id="galleryList">
+                <div class="gallery">
+                    <a href="./images/family.png">
+                        <img src="./images/family.png">
+                    </a>
+                        <p class="desc">My family and I</p>
+                </div>
+                <div class="gallery">
+                    <a href="./images/bitmoji.png">
+                        <img src="./images/bitmoji.png">
+                    </a>
+                        <p class="desc">My bitmoji in a crown</p>
+                </div>
+                <div class="gallery">
+                    <a href="./images/alana.jpg">
+                        <img src="./images/alana.jpg">
+                    </a>
+                        <p class="desc">An image of me from the I am ALANA (Asian/Latin/African/Native American) Campaign</p>
+                </div>
+                <div class="gallery">
+                    <a href="./images/me.jpg">
+                        <img src="./images/me.jpg">
+                    </a>
+                        <p class="desc">Me at an OAS (Organization of African Students) meeting</p>
+                </div>
+                <div class="gallery">
+                    <a href="./images/workBitmoji.jpg">
+                        <img src="./images/workBitmoji.jpg">
+                    </a>
+                        <p class="desc">My bitmoji hard at work</p>
+                </div>
+                <div class="gallery">
+                    <a href="./images/Snapchat.jpg">
+                        <img src="./images/Snapchat.jpg">
+                    </a>
+                        <p class="desc">Me enjoying snapchat features</p>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
