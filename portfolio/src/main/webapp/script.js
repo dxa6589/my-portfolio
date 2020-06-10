@@ -39,3 +39,11 @@ function expand(num, section){
         coll.style.transform = "rotate(0deg)";
     }
 }
+
+function getHelloDolapoMessage() {
+  fetch('/data').then(response => response.text()).then(message => {
+      document.getElementById('content').innerHTML = //message;
+      message.concat(document.getElementById('content').innerHTML);
+      console.log("checkpoint 2");
+    });
+}
