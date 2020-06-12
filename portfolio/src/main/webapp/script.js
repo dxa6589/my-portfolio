@@ -40,10 +40,38 @@ function expand(num, section){
     }
 }
 
-function getHelloDolapoMessage() {
-  fetch('/data').then(response => response.text()).then(message => {
-      document.getElementById('content').innerHTML = //message;
-      message.concat(document.getElementById('content').innerHTML);
-      console.log("checkpoint 2");
+function getServerMessage() {
+  fetch('/data').then(response => response.json()).then(list => {
+      console.log("List received");
+
+      const ulElement = document.createElement('ul');
+      ulElement.innerHTML = '';/*
+
+      var i;
+      for (i = 0; i < list.length; i++) {
+        ulElement.appendChild(createListElement(list[i]));
+      }
+
+      document.getElementById('content').innerHTML = (
+      list).concat(document.getElementById('content').innerHTML);
+    });*/
+      console.log("ulElement created");
+
+      var i;
+      for (i = 0; i < list.length; i++) {
+        ulElement.appendChild(createListElement(list[i]));
+      }
+      console.log("ulElement updated");
+       
+      document.getElementById('content').innerHTML = ("<h2>Comments</h2>" + 
+      "<ul>" + ulElement.innerHTML + "</ul>").concat(document.getElementById('content').innerHTML);
     });
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
+
 }
