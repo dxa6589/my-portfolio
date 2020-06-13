@@ -24,40 +24,29 @@ import com.google.gson.Gson;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  
-  private ArrayList<String> quotes;
 
-  @Override
-  public void init() {
-    quotes = new ArrayList<>();/*
-    quotes.add("Hello world!");
-    quotes.add("That's rough buddy");
-    quotes.add("She didn't say you did this, she said Hugh did this");
-    quotes.add("The grass is not always greener on the other side, it's greener where you water it");
-    quotes.add("The krusty krab pizza is the pizza for you and me");
-    quotes.add("What the foop? It's time to go girl");
-    quotes.add("It's the quenchiest!");*/
-  }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    /*Query query = new Query("Comment");
+    Query query = new Query("Comment").addSort("ID", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
-    //quotes List<Task> tasks = new ArrayList<>();
+    ArrayList<String> quotes = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       String value = (String) entity.getProperty("value");
       quotes.add(value);
-    }*/
+    }
 
     Gson gson = new Gson();
-    String json = gson.toJson(this.quotes);
+    String json = gson.toJson(quotes);
 
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -68,7 +57,6 @@ public class DataServlet extends HttpServlet {
 
     // Get the input from the form.
     String comment = request.getParameter("comment");
-    quotes.add(comment);
 
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("value", comment);
