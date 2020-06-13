@@ -6,8 +6,17 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
-    <body onclick="getServerMessage()">
+    <body onload="getComments()">
         <div id="content">
+            <div id="comments">
+                <h2>Comments</h2>
+                <form action="/data" method="POST">
+                    <label for="comment">Enter comment here:</label>
+                    <input type="text" id="comment" name="comment" >
+                    <input type="submit" id="submit">
+                </form>
+                <ul id="comments-list">
+            </div>
             <h1>My Portfolio</h1>
             <h2>About Me</h2>
             <img id="me" src="./images/bitmoji.png">

@@ -40,31 +40,19 @@ function expand(num, section){
     }
 }
 
-function getServerMessage() {
+function getComments() {
   fetch('/data').then(response => response.json()).then(list => {
-      console.log("List received");
+      console.log("List received from server");
 
-      const ulElement = document.createElement('ul');
-      ulElement.innerHTML = '';/*
-
-      var i;
-      for (i = 0; i < list.length; i++) {
-        ulElement.appendChild(createListElement(list[i]));
-      }
-
-      document.getElementById('content').innerHTML = (
-      list).concat(document.getElementById('content').innerHTML);
-    });*/
-      console.log("ulElement created");
+      const comments = document.getElementById('comments-list');
+      comments.innerHTML = '';
+      console.log("comments list created");
 
       var i;
       for (i = 0; i < list.length; i++) {
-        ulElement.appendChild(createListElement(list[i]));
+        comments.appendChild(createListElement(list[i]));
       }
-      console.log("ulElement updated");
-       
-      document.getElementById('content').innerHTML = ("<h2>Comments</h2>" + 
-      "<ul>" + ulElement.innerHTML + "</ul>").concat(document.getElementById('content').innerHTML);
+      console.log("comments list filled");
     });
 
 /** Creates an <li> element containing text. */

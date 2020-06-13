@@ -30,10 +30,10 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void init() {
-    quotes = new ArrayList<>();
+    quotes = new ArrayList<>();/*
     quotes.add("Hello world!");
     quotes.add("That's rough buddy");
-    quotes.add("She didn't say you did this, she said Hugh did this");/*
+    quotes.add("She didn't say you did this, she said Hugh did this");
     quotes.add("The grass is not always greener on the other side, it's greener where you water it");
     quotes.add("The krusty krab pizza is the pizza for you and me");
     quotes.add("What the foop? It's time to go girl");
@@ -51,4 +51,14 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    // Get the input from the form.
+    String comment = request.getParameter("comment");
+    quotes.add(comment);
+
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+  }
 }

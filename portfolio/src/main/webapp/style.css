@@ -105,3 +105,17 @@ figcaption{
     background-size: contain;
     width: 95px;
 }
+
+#comments{
+    padding: 5px;
+    background-color: rgba(217, 188, 221, 0.9); 
+    border-radius: 20px;
+}
+
+#submit{
+    color:rgb(217, 188, 221); 
+    background:navy; 
+    border-color:navy; 
+    border-radius:20px; 
+    cursor:pointer;
+}
