@@ -21,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import com.google.gson.Gson;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -42,7 +45,16 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    /*String quote = quotes.get((int) (Math.random() * quotes.size()));*/
+    /*Query query = new Query("Comment");
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    //quotes List<Task> tasks = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+      String value = (String) entity.getProperty("value");
+      quotes.add(value);
+    }*/
 
     Gson gson = new Gson();
     String json = gson.toJson(this.quotes);
@@ -57,6 +69,12 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String comment = request.getParameter("comment");
     quotes.add(comment);
+
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("value", comment);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
 
     // Redirect back to the HTML page.
     response.sendRedirect("/index.html");
