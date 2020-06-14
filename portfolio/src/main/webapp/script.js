@@ -48,18 +48,16 @@ function getComments() {
       comments.innerHTML = '';
       console.log("comments list created");
 
-      var i;
-      for (i = 0; i < list.length; i++) {
-        comments.appendChild(createListElement(list[i]));
-      }
+      list.forEach(createListElement)
       console.log("comments list filled");
     });
 
-/** Creates an <li> element containing text. */
-function createListElement(text) {
+/** Creates an <li> element containing a comment. */
+function createListElement(item) {
   const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+  liElement.style.padding = "10px";
+  liElement.innerHTML = "<strong>" + item[0] + "</strong> " + item[1] + "<hr>";
+  document.getElementById('comments-list').appendChild(liElement);
 }
 
 }

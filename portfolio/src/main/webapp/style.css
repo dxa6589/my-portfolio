@@ -112,6 +112,10 @@ figcaption{
     border-radius: 20px;
 }
 
+#comments-list {
+    list-style-type: none;
+}
+
 #submit{
     color:rgb(217, 188, 221); 
     background:navy; 
