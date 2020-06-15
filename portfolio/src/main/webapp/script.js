@@ -48,7 +48,7 @@ function getComments() {
       comments.innerHTML = '';
       console.log("comments list created");
 
-      list.forEach(createListElement)
+      list.forEach(item => comments.appendChild(createListElement(item)))
       console.log("comments list filled");
     });
 
@@ -56,8 +56,10 @@ function getComments() {
 function createListElement(item) {
   const liElement = document.createElement('li');
   liElement.style.padding = "10px";
-  liElement.innerHTML = "<strong>" + item[0] + "</strong> " + item[1] + "<hr>";
-  document.getElementById('comments-list').appendChild(liElement);
+  var name = item[0].replace(/</g, "&lt");
+  var comment = item[1].replace(/</g, "&lt");
+  liElement.innerHTML = "<strong>" + name + "</strong> " + comment + "<hr>";
+  return liElement;
 }
 
 }

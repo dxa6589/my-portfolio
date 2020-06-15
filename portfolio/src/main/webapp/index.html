@@ -8,17 +8,6 @@
     </head>
     <body onload="getComments()">
         <div id="content">
-            <div id="comments">
-                <h2>Comments</h2>
-                <form action="/data" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" >
-                    <label for="comment">Enter comment here:</label>
-                    <input type="text" id="comment" name="comment" >
-                    <input type="submit" id="submit">
-                </form>
-                <ul id="comments-list">
-            </div>
             <h1>My Portfolio</h1>
             <h2>About Me</h2>
             <img id="me" src="./images/bitmoji.png">
@@ -40,7 +29,8 @@
                 I also performed as #8 in RIT performing arts scholarship's 
                 production of "The Wolves". I try to abide by the motto "Live
                 while you can", which basically means try everything and is how 
-                I got into musicals in the first place.
+                I got into musicals in the first place. Check out my 
+                <a href="./pages/gallery.html">gallery.</a>
             </p>
             <p>
                 You can find me on LinkedIn and GitHub through the links below:
@@ -52,11 +42,12 @@
             <button onclick="addRandomQuote()">Hello</button>
             <div id="quote-container"></div>
 
-            <h2>
-                <div>Professional Portfolio</div>
-                <!--button class="collapsible" onclick="expand(0, 'portfolio');" style="width:10px;"></button-->
-            </h2>
+            
             <div id="portfolio">
+                <h2>
+                    <div>Professional Portfolio</div>
+                    <!--button class="collapsible" onclick="expand(0, 'portfolio');" style="width:10px;"></button-->
+                </h2>
                 <figure href="./images/miles.jpg">
                     <img src="./images/miles.jpg">
                     <figcaption>A Miles Morales screensaver I designed using photoshop</figcaption>
@@ -101,8 +92,8 @@
                 </ul>
             </div>
 
-            <h2>Relevant Experience</h2>
             <div id="experience">
+                <h2>Relevant Experience</h2>
                 <strong>Terragon Group</strong>, Lagos, Nigeria— Software 
                 Engineering Intern
                 JULY 2019 - AUGUST 2019
@@ -131,8 +122,8 @@
                 </ul>
             </div>
 
-            <h2>Organizations and Extra-curricular Activities</h2>
             <div id="organizations">
+                <h2>Organizations and Extra-curricular Activities</h2>
                 <ul>
                     <li>
                         Organization of African Students (OAS) Secretary for 
@@ -156,46 +147,16 @@
                 </ul>
             </div>
 
-            <h2>Gallery</h2>
-            <div id="galleryList">
-                <div class="gallery">
-                    <a href="./images/family.png">
-                        <img src="./images/family.png">
-                    </a>
-                        <p class="desc">My family and I</p>
-                </div>
-                <div class="gallery">
-                    <a href="./images/bitmoji.png">
-                        <img src="./images/bitmoji.png">
-                    </a>
-                        <p class="desc">My bitmoji in a crown</p>
-                </div>
-                <div class="gallery">
-                    <a href="./images/alana.jpg">
-                        <img src="./images/alana.jpg">
-                    </a>
-                        <p class="desc">An image of me from the I am ALANA 
-                            (Asian/Latin/African/Native American) Campaign</p>
-                </div>
-                <div class="gallery">
-                    <a href="./images/me.jpg">
-                        <img src="./images/me.jpg">
-                    </a>
-                        <p class="desc">Me at an OAS (Organization of African 
-                            Students) meeting</p>
-                </div>
-                <div class="gallery">
-                    <a href="./images/workBitmoji.jpg">
-                        <img src="./images/workBitmoji.jpg">
-                    </a>
-                        <p class="desc">My bitmoji hard at work</p>
-                </div>
-                <div class="gallery">
-                    <a href="./images/Snapchat.jpg">
-                        <img src="./images/Snapchat.jpg">
-                    </a>
-                        <p class="desc">Me enjoying snapchat features</p>
-                </div>
+            <div id="comments">
+                <h2>Comments</h2>
+                <form action="/data" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" ><br>
+                    <label for="comment">Enter comment here:</label>
+                    <input type="text" id="comment" name="comment"><br>
+                    <input type="submit" id="submit">
+                </form>
+                <ul id="comments-list">
             </div>
         </div>
     </body>
