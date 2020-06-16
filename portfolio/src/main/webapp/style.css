@@ -22,10 +22,6 @@ body {
   height: auto;
 }
 
-h2 {
-
-}
-
 .section-head {
     text-align: center;
     padding-top: 5px;
@@ -104,4 +100,22 @@ figcaption{
     background: white url("./images/github.png");
     background-size: contain;
     width: 95px;
+}
+
+#comments{
+    padding: 5px;
+    background-color: rgba(217, 188, 221, 0.9); 
+    border-radius: 20px;
+}
+
+#comments-list {
+    list-style-type: none;
+}
+
+#submit{
+    color:rgb(217, 188, 221); 
+    background:navy; 
+    border-color:navy; 
+    border-radius:20px; 
+    cursor:pointer;
 }

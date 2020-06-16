@@ -39,3 +39,27 @@ function expand(num, section){
         coll.style.transform = "rotate(0deg)";
     }
 }
+
+function getComments() {
+  fetch('/data').then(response => response.json()).then(list => {
+      console.log("List received from server");
+
+      const comments = document.getElementById('comments-list');
+      comments.innerHTML = '';
+      console.log("comments list created");
+
+      list.forEach(item => comments.appendChild(createListElement(item)))
+      console.log("comments list filled");
+    });
+
+/** Creates an <li> element containing a comment. */
+function createListElement(item) {
+  const liElement = document.createElement('li');
+  liElement.style.padding = "10px";
+  var name = item[0].replace(/</g, "&lt");
+  var comment = item[1].replace(/</g, "&lt");
+  liElement.innerHTML = "<strong>" + name + "</strong> " + comment + "<hr>";
+  return liElement;
+}
+
+}
