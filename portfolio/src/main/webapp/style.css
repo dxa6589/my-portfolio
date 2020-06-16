@@ -103,7 +103,7 @@ figcaption{
 }
 
 #comments{
-    padding: 5px;
+    padding: 2px 20px 10px;
     background-color: rgba(217, 188, 221, 0.9); 
     border-radius: 20px;
 }
@@ -112,10 +112,23 @@ figcaption{
     list-style-type: none;
 }
 
+label{
+    background-color: rgba(217, 188, 221, 0.9); 
+}
+
+#name{
+    border-radius: 5px;
+}
+#comment{
+    width:99%;
+    border-radius: 5px;
+}
+
 #submit{
     color:rgb(217, 188, 221); 
     background:navy; 
     border-color:navy; 
     border-radius:20px; 
+    margin: 2px auto auto auto;
     cursor:pointer;
 }
