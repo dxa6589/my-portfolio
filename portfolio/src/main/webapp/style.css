@@ -15,7 +15,7 @@ body {
     font-size: 17pt;
     list-style-type: none;
     height: 1.7em;
-    width: 300px;
+    width: 400px;
     display: flex;
     float: right;/*
     margin-right: 15px;
@@ -27,7 +27,7 @@ body {
     text-align: center;
     vertical-align: middle;
     height: 100%;
-    width: 100%;
+    width: 100%/*px*/;
     color:white;/*
     background-color: red;
     border: solid 5px red;*/
