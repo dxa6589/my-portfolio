@@ -50,7 +50,20 @@ function getComments() {
 
       list.forEach(item => comments.appendChild(createListElement(item)))
       console.log("comments list filled");
+  
     });
+  var signedIn = true;
+  if (signedIn){
+      document.getElementById('comments-prompt').style.display = 'none';
+      document.getElementById('comments-form').style.display = 'block';
+      document.getElementById('login').innerText = 'LOGOUT';
+  } else{
+      
+      document.getElementById('comments-prompt').style.display = 'block';
+      document.getElementById('comments-form').style.display = 'none';
+      document.getElementById('login').innerText = 'LOGIN';
+  }
+}
 
 /** Creates an <li> element containing a comment. */
 function createListElement(item) {
@@ -60,6 +73,4 @@ function createListElement(item) {
   var comment = item[1].replace(/</g, "&lt");
   liElement.innerHTML = "<strong>" + name + "</strong> " + comment + "<hr>";
   return liElement;
-}
-
 }

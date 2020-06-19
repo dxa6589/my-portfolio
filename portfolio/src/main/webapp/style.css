@@ -1,5 +1,45 @@
-body { 
-  background-color: rgba(217, 188, 221, 0.45)/*rgb(182, 253, 255)*/;
+body {
+    margin:0px;
+    background-color: rgba(217, 188, 221, 0.45)
+}
+
+#nav{
+    background-color: rgb(139, 33, 153);
+    color: white;
+    display: flex;
+    padding-left:20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#nav-list{
+    font-size: 17pt;
+    list-style-type: none;
+    height: 1.7em;
+    width: 300px;
+    display: flex;
+    float: right;/*
+    margin-right: 15px;
+    margin-left: auot;*/
+}
+
+#nav-list a{
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+    color:white;/*
+    background-color: red;
+    border: solid 5px red;*/
+}
+
+#nav-list a:hover{
+    background-color: rgba(255, 255, 255, 0.219);
+    border-bottom: solid 5px rgba(0, 0, 128, 0.5);
+}
+
+a#current {
+    border-bottom: solid 5px navy;
 }
 
 #content {
@@ -9,7 +49,8 @@ body {
   font-family: "Merriweather", Georgia, serif;
   padding-left: 1em;
   padding-right: 1em;
-  color: navy;
+  color: navy;/*
+  background-color: rgba(217, 188, 221, 0.45)rgb(182, 253, 255)*/;
 }
 
 #greeting-container {
@@ -25,6 +66,14 @@ body {
 .section-head {
     text-align: center;
     padding-top: 5px;
+}
+
+.infoBox{
+    border: solid 2px navy;
+    border-radius: 20px;
+    background-color: rgb(217, 188, 221);
+    padding: 10px;/*
+    display: inline-block; */
 }
 
 .collapsible {
@@ -49,35 +98,6 @@ body {
     width:500px;
 }
 
-.gallery{
-    margin: 10px;
-    float: left;
-    width: 30%;
-}
-.gallery a img{
-    width: 95%;
-    /*
-    height: 30%;
-    max-width: 10000px;*/
-    border: 5px solid navy;
-    cursor: pointer;
-}
-.gallery a img:hover{
-    border-color: blue;
-}
-
-.desc, figcaption{
-    text-align: center;
-    text-decoration: none;
-    color: navy;
-    font-size: small;
-    font-style: italic;
-    }
-
-figcaption{
-    width: 500px;
-}
-
 #lin, #ghub{
     background-position: center;
     background-repeat: no-repeat;
@@ -92,14 +112,20 @@ figcaption{
 
 #lin{
     background: white url("./images/linkedin.png");
+    width: 120px;
+    background-position: center;
     background-size: contain;
-    width: 100px;
+    border-radius:20px;
+    background-repeat: no-repeat;
 }
 
 #ghub{
     background: white url("./images/github.png");
-    background-size: contain;
     width: 95px;
+    background-position: center;
+    background-size: contain;
+    border-radius:20px;
+    background-repeat: no-repeat;
 }
 
 #comments{
@@ -124,11 +150,50 @@ label{
     border-radius: 5px;
 }
 
-#submit{
+#submit, #quote-button{
     color:rgb(217, 188, 221); 
     background:navy; 
     border-color:navy; 
     border-radius:20px; 
     margin: 2px auto auto auto;
     cursor:pointer;
+}
+
+
+.gallery{
+    margin: 10px;
+    float: left;
+    width: 30%;
+}
+.gallery a img{
+    width: 95%;
+    /*
+    height: 30%;
+    max-width: 10000px;*/
+    border: 5px solid navy;
+    cursor: pointer;
+}
+.gallery a img:hover{
+    border-color: blue;
+}
+
+.desc{
+    text-align: center;
+    text-decoration: none;
+    color: navy;
+    font-size: small;
+    font-style: italic;
+}
+
+#resume{
+    width: 100%;
+    height: 800px;
+    max-height: -webkit-fill-available;
+}
+
+@media only screen and (max-width: 1024px) {
+    /*Tablets: Move boxes around, reduce margins*/
+}
+@media only screen and (max-width: 768px) {
+    /*Phones: Move boxes around, reduce margins*/
 }
