@@ -138,6 +138,10 @@ a#current {
     list-style-type: none;
 }
 
+#comments-form {
+    display: none;
+}
+
 label{
     background-color: rgba(217, 188, 221, 0.9); 
 }

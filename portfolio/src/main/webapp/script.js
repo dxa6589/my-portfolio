@@ -40,6 +40,26 @@ function expand(num, section){
     }
 }
 
+function getLogin() {
+  fetch('/login').then(response => response.json()).then(signedIn => {
+      console.log(signedIn);
+    if (signedIn[0] == 'true'){
+        //document.getElementById('comments-prompt').style.display = 'none';
+        document.getElementById('comments-form').style.display = 'block';
+        document.getElementById('login').innerText = 'LOGOUT';
+        document.getElementById('login').setAttribute('href', signedIn[1]);
+    } else{
+        document.getElementById('comments-prompt').innerHTML = 
+            "<a href="+signedIn[1]+">Sign in here</a> to post a comment";
+        /*Add log-in link here*/
+        document.getElementById('comments-form').style.display = 'none';
+        document.getElementById('login').innerText = 'LOGIN';
+        document.getElementById('login').setAttribute('href', signedIn[1]);
+    }
+  });
+  getComments();
+}
+
 function getComments() {
   fetch('/data').then(response => response.json()).then(list => {
       console.log("List received from server");
@@ -50,19 +70,7 @@ function getComments() {
 
       list.forEach(item => comments.appendChild(createListElement(item)))
       console.log("comments list filled");
-  
     });
-  var signedIn = true;
-  if (signedIn){
-      document.getElementById('comments-prompt').style.display = 'none';
-      document.getElementById('comments-form').style.display = 'block';
-      document.getElementById('login').innerText = 'LOGOUT';
-  } else{
-      
-      document.getElementById('comments-prompt').style.display = 'block';
-      document.getElementById('comments-form').style.display = 'none';
-      document.getElementById('login').innerText = 'LOGIN';
-  }
 }
 
 /** Creates an <li> element containing a comment. */

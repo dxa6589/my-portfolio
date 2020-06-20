@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
-    <body onload="getComments()">
+    <body onload="getLogin()">
         <div id="nav">
             <h1>♥DOLAPO'S  PORTFOLIO</h1>
             <ul id="nav-list">
@@ -17,6 +17,19 @@
             </ul>
         </div>
         <div id="content">
+            <div id="comments" class="infoBox">
+                <h2>Comments</h2>
+                <p id="comments-prompt"><!--a href="#">Sign-in</a> to post a comment--></p>
+                <form id="comments-form" action="/data" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="comment">Enter comment here:</label><br>
+                    <input type="text" id="comment" name="comment"><br>
+                    <input type="submit" id="submit">
+                </form>
+                <ul id="comments-list">
+            </div>
+
             <div id="about" class="infoBox">
                 <h2>About Me</h2>
                 <img id="me" src="./images/bitmoji.png">
@@ -42,7 +55,7 @@
                 </p>
             </div>
 
-            <div class="infoBox">
+            <div id="contact" class="infoBox">
                 <p>
                     You can find me on LinkedIn and GitHub through the links below:
                 </p>
@@ -98,18 +111,6 @@
                 </ul>
             </div>
             
-             <div id="comments" class="infoBox">
-                <h2>Comments</h2>
-                <p id="comments-prompt"><a href="#">Sign-in</a> to post a comment</p>
-                <form id="comments-form" action="/data" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name"><br>
-                    <label for="comment">Enter comment here:</label><br>
-                    <input type="text" id="comment" name="comment"><br>
-                    <input type="submit" id="submit">
-                </form>
-                <ul id="comments-list">
-            </div>
         </div>
     </body>
 </html>
