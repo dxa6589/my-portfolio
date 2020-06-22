@@ -6,52 +6,71 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
-    <body onload="getComments()">
+    <body onload="getLogin()">
+        <div id="nav">
+            <h1>♥DOLAPO'S  PORTFOLIO</h1>
+            <ul id="nav-list">
+                <a id="current" href="#"><li>HOME</li></a>
+                <a href="./pages/gallery.html"><li>GALLERY</li></a>
+                <a href="./pages/resume.html"><li>RESUME</li></a>
+                <a id="login" href="#"><li>LOGIN</li></a>
+            </ul></b>
+        </div>
         <div id="content">
-            <h1>My Portfolio</h1>
-            <h2>About Me</h2>
-            <img id="me" src="./images/bitmoji.png">
-            <p>
-                My name is Oluwadolapo "Dolapo" Atobiloye. I am a second-year 
-                Bachelor's of Science student studying Computer Science at 
-                Rochester Insitute of Technology with a minor in Game Design 
-                & Development and an Immersion in Theater Arts.
-            </p>
-            <p>
-                I have experience as a Software Engineering intern in Terragon 
-                Group located in Lagos Nigeria. I have also completed multiple 
-                computer science and web design courses in my time at RIT.
-            </p>
-            <p>
-                I am a huge fan of musical theater and while I'm not much of a 
-                singer, I consider myself a budding actress. I originated the 
-                role of Yashira in the origianl play AI-Pollo by David Munnell.
-                I also performed as #8 in RIT performing arts scholarship's 
-                production of "The Wolves". I try to abide by the motto "Live
-                while you can", which basically means try everything and is how 
-                I got into musicals in the first place. Check out my 
-                <a href="./pages/gallery.html">gallery.</a>
-            </p>
-            <p>
-                You can find me on LinkedIn and GitHub through the links below:
-            </p>
-            <button id="lin" onclick="window.location.href='https://www.linkedin.com/in/dolapo-atobiloye'"></button>
-            <button id="ghub" onclick="window.location.href='https://www.github.com/dxa6589'"></button>
+            <div id="comments" class="infoBox">
+                <h2>Comments</h2>
+                <p id="comments-prompt"></p>
+                <form id="comments-form" action="/data" method="POST">
+                    <!--label for="name">Name:</label>
+                    <input type="text" id="name" name="name"><br-->
+                    <label for="comment">Enter comment here:</label>
+                    <input type="text" id="comment" name="comment">
+                    <input type="submit" id="submit">
+                </form>
+                <ul id="comments-list">
+            </div>
 
-            <p>Click here to get a message in a random language:</p>
-            <button onclick="addRandomQuote()">Hello</button>
-            <div id="quote-container"></div>
+            <div id="about" class="infoBox">
+                <h2>About Me</h2>
+                <img id="me" src="./images/bitmoji.png">
+                <p>
+                    My name is Oluwadolapo "Dolapo" Atobiloye. I am a second-year 
+                    Bachelor's of Science student studying Computer Science at 
+                    Rochester Insitute of Technology with a minor in Game Design 
+                    & Development and an Immersion in Theater Arts.
+                </p>
+                <p>
+                    I have experience as a Software Engineering intern in Terragon 
+                    Group located in Lagos Nigeria. I have also completed multiple 
+                    computer science and web design courses in my time at RIT.
+                </p>
+                <p>
+                    I am a huge fan of musical theater and while I'm not much of a 
+                    singer, I consider myself a budding actress. I originated the 
+                    role of Yashira in the origianl play AI-Pollo by David Munnell.
+                    I also performed as #8 in RIT performing arts scholarship's 
+                    production of "The Wolves". I try to abide by the motto "Live
+                    while you can", which basically means try everything and is how 
+                    I got into musicals in the first place. 
+                </p>
+            </div>
 
-            
-            <div id="portfolio">
+            <div id="contact" class="infoBox">
+                <p>
+                    You can find me on LinkedIn and GitHub through the links below:
+                </p>
+                <button id="lin" onclick="window.location.href='https://www.linkedin.com/in/dolapo-atobiloye'"></button>
+                <button id="ghub"  onclick="window.location.href='https://www.github.com/dxa6589'"></button>
+
+                <p>Click here to get a message in a random language:</p>
+                <button id="quote-button" onclick="addRandomQuote()">Hello</button>
+                <div id="quote-container"></div>
+            </div><br>
+
+            <div id="portfolio"  class="infoBox">
                 <h2>
-                    <div>Professional Portfolio</div>
-                    <!--button class="collapsible" onclick="expand(0, 'portfolio');" style="width:10px;"></button-->
+                    <div>Projects</div>
                 </h2>
-                <figure href="./images/miles.jpg">
-                    <img src="./images/miles.jpg">
-                    <figcaption>A Miles Morales screensaver I designed using photoshop</figcaption>
-                </figure>
                 <strong>Project Prius</strong> - Terragon Intership
                 <ul>
                     <li>
@@ -91,73 +110,7 @@
                     </li>
                 </ul>
             </div>
-
-            <div id="experience">
-                <h2>Relevant Experience</h2>
-                <strong>Terragon Group</strong>, Lagos, Nigeria— Software 
-                Engineering Intern
-                JULY 2019 - AUGUST 2019
-                <ul>
-                    <li>
-                        Worked on the backend of the Customer Database Platform
-                        project.
-                    </li>
-                    <li>
-                        Developed an interactive ChatBot, Project Prius, with a 
-                        team of interns.
-                    </li>
-                </ul>
-                <strong>NURHI(Nigerian Urban Reproductive Health Initiative</strong>
-                , Lagos, Nigeria— Intern    
-                SEPTEMBER 2017 - DECEMBER 2017
-                <ul>
-                    <li>
-                        Participated in strategy design workshops and a formative
-                        research study.
-                    </li>
-                    <li>
-                        Compiled highly readable reports for workshops, conferences,
-                        and meetings.
-                    </li>
-                </ul>
-            </div>
-
-            <div id="organizations">
-                <h2>Organizations and Extra-curricular Activities</h2>
-                <ul>
-                    <li>
-                        Organization of African Students (OAS) Secretary for 
-                        2019/2020 school year
-                    </li>
-                    <li>
-                        RIT Department of Computer Science Computer Science 
-                        Ambassador
-                    </li>
-                    <li>
-                        Women In Computing (WiC) General body member
-                    </li>
-                    <li>
-                        Women of Excellence Supporting STEM (WOESS) General body 
-                        member
-                    </li>
-                    <li>
-                        Lagoon High School Book Club President for 2016/2017 
-                        school year
-                    </li>
-                </ul>
-            </div>
-
-            <div id="comments">
-                <h2>Comments</h2>
-                <form action="/data" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" ><br>
-                    <label for="comment">Enter comment here:</label>
-                    <input type="text" id="comment" name="comment"><br>
-                    <input type="submit" id="submit">
-                </form>
-                <ul id="comments-list">
-            </div>
+            
         </div>
     </body>
 </html>

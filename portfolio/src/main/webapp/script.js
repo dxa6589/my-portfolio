@@ -40,6 +40,25 @@ function expand(num, section){
     }
 }
 
+function getLogin() {
+  fetch('/login').then(response => response.json()).then(signedIn => {
+      console.log(signedIn);
+    if (signedIn[0] == 'true'){
+        //document.getElementById('comments-prompt').style.display = 'none';
+        document.getElementById('comments-form').style.display = 'block';
+        document.getElementById('login').innerText = 'LOGOUT';
+        document.getElementById('login').setAttribute('href', signedIn[1]);
+    } else{
+        document.getElementById('comments-prompt').innerHTML = 
+            '<a href='+signedIn[1]+'>Sign in here</a> to post a comment';
+        document.getElementById('comments-form').style.display = 'none';
+        document.getElementById('login').innerText = 'LOGIN';
+        document.getElementById('login').setAttribute('href', signedIn[1]);
+    }
+  });
+  getComments();
+}
+
 function getComments() {
   fetch('/data').then(response => response.json()).then(list => {
       console.log("List received from server");
@@ -51,15 +70,14 @@ function getComments() {
       list.forEach(item => comments.appendChild(createListElement(item)))
       console.log("comments list filled");
     });
+}
 
 /** Creates an <li> element containing a comment. */
 function createListElement(item) {
   const liElement = document.createElement('li');
   liElement.style.padding = "10px";
-  var name = item[0].replace(/</g, "&lt");
-  var comment = item[1].replace(/</g, "&lt");
-  liElement.innerHTML = "<strong>" + name + "</strong> " + comment + "<hr>";
+  var email = item[1].replace(/</g, "&lt");
+  var comment = item[2].replace(/</g, "&lt");
+  liElement.innerHTML = "<strong>" + email + "</strong> " + comment + "<hr>";
   return liElement;
-}
-
 }

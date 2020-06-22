@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.HashMap;
 import com.google.gson.Gson;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -28,6 +27,9 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -40,28 +42,35 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
-    ArrayList<ArrayList<String>> quotes = new ArrayList<ArrayList<String>>();
+    ArrayList<ArrayList<String>> commentsList = new ArrayList<ArrayList<String>>();
     for (Entity entity : results.asIterable()) {
       String name = (String) entity.getProperty("name");
+      String email = (String) entity.getProperty("email");
       String value = (String) entity.getProperty("value");
       long timestamp = (long) entity.getProperty("timestamp");
 
       ArrayList<String> comment = new ArrayList<String>();
       comment.add(name);
+      comment.add(email);
       comment.add(value);
       comment.add(String.valueOf(timestamp));
 
-      quotes.add(comment);
+      commentsList.add(comment);
     }
 
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(quotes));
+    response.getWriter().println(gson.toJson(commentsList));
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    
+    //Get the user log in information
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+    String email = user.getEmail();
 
     // Get the input from the form.
     String name = request.getParameter("name");
@@ -70,6 +79,7 @@ public class DataServlet extends HttpServlet {
 
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("name", name);
+    commentEntity.setProperty("email", email);
     commentEntity.setProperty("value", comment);
     commentEntity.setProperty("timestamp", timestamp);
 
@@ -80,7 +90,5 @@ public class DataServlet extends HttpServlet {
     response.sendRedirect("/index.html");
   }
 }
-/*
-Style and position
-Disperse pages
-*/
+
+/*Get users sign in email and display with comment*/
