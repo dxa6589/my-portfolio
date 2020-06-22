@@ -196,8 +196,10 @@ label{
 }
 
 @media only screen and (max-width: 1024px) {
-    /*Tablets: Move boxes around, reduce margins*/
+    /*Tablets: Move boxes around, reduce margins, 
+    move comment input to next line*/
 }
 @media only screen and (max-width: 768px) {
-    /*Phones: Move boxes around, reduce margins*/
+    /*Phones: Move boxes around, reduce margins, 
+    move comment input to next line*/
 }

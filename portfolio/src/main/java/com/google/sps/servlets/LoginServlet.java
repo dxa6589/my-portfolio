@@ -2,7 +2,6 @@
 package com.google.sps.servlets;
 
 import com.google.gson.Gson;
-import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import java.util.ArrayList;

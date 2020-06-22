@@ -50,8 +50,7 @@ function getLogin() {
         document.getElementById('login').setAttribute('href', signedIn[1]);
     } else{
         document.getElementById('comments-prompt').innerHTML = 
-            "<a href="+signedIn[1]+">Sign in here</a> to post a comment";
-        /*Add log-in link here*/
+            '<a href='+signedIn[1]+'>Sign in here</a> to post a comment';
         document.getElementById('comments-form').style.display = 'none';
         document.getElementById('login').innerText = 'LOGIN';
         document.getElementById('login').setAttribute('href', signedIn[1]);
@@ -77,8 +76,8 @@ function getComments() {
 function createListElement(item) {
   const liElement = document.createElement('li');
   liElement.style.padding = "10px";
-  var name = item[0].replace(/</g, "&lt");
-  var comment = item[1].replace(/</g, "&lt");
-  liElement.innerHTML = "<strong>" + name + "</strong> " + comment + "<hr>";
+  var email = item[1].replace(/</g, "&lt");
+  var comment = item[2].replace(/</g, "&lt");
+  liElement.innerHTML = "<strong>" + email + "</strong> " + comment + "<hr>";
   return liElement;
 }
