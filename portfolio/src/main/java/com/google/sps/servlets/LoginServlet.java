@@ -2,6 +2,7 @@
 package com.google.sps.servlets;
 
 import com.google.gson.Gson;
+import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import java.util.ArrayList;
@@ -17,17 +18,23 @@ public class LoginServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      UserService userService = UserServiceFactory.getUserService();
 
+      //Get current userService and login information
+      UserService userService = UserServiceFactory.getUserService();
       String loggedIn = userService.isUserLoggedIn() + "";
       String logInLink = userService.createLoginURL("/");
+      String logOutLink = userService.createLogoutURL("/");
+      String nickname = (userService.isUserLoggedIn() ? userService.getCurrentUser().getNickname() : "");
 
+      //Store login information as list object
       ArrayList<String> logInfo = new ArrayList<String>();
       logInfo.add(loggedIn);
       logInfo.add(logInLink);
+      logInfo.add(logOutLink);
+      logInfo.add(nickname);
 
+      //Convert login information to json and return
       Gson gson = new Gson();
-
       response.setContentType("application/json;");
       response.getWriter().println(gson.toJson(logInfo));
   }

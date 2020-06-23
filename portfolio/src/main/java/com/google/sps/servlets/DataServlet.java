@@ -90,5 +90,3 @@ public class DataServlet extends HttpServlet {
     response.sendRedirect("/index.html");
   }
 }
-
-/*Get users sign in email and display with comment*/
