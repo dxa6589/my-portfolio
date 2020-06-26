@@ -62,6 +62,20 @@ function getLogin() {
   getComments();
 }
 
+function getLogin2() {
+    console.log('entered getLogin()');
+  fetch('/login').then(response => response.json()).then(signedIn => {
+      console.log(signedIn);
+    if (signedIn[0] == 'true'){
+        document.getElementById('login').innerText = 'LOGOUT';
+        document.getElementById('login').setAttribute('href', signedIn[2]);
+    } else{
+        document.getElementById('login').innerText = 'LOGIN';
+        document.getElementById('login').setAttribute('href', signedIn[1]);
+    }
+  });
+}
+
 function getComments() {
   fetch('/data').then(response => response.json()).then(list => {
       console.log("List received from server");
