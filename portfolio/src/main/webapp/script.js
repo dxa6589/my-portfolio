@@ -41,22 +41,39 @@ function expand(num, section){
 }
 
 function getLogin() {
+    console.log('entered getLogin()');
   fetch('/login').then(response => response.json()).then(signedIn => {
       console.log(signedIn);
     if (signedIn[0] == 'true'){
-        //document.getElementById('comments-prompt').style.display = 'none';
+        document.getElementById('comments-prompt').innerHTML = 
+            'Currently signed in as ' + signedIn[3] + 
+            '<br><a style="color:navy; text-decoration:underline;" href=' + signedIn[2] + '>Click here</a> to sign out.';
         document.getElementById('comments-form').style.display = 'block';
         document.getElementById('login').innerText = 'LOGOUT';
-        document.getElementById('login').setAttribute('href', signedIn[1]);
+        document.getElementById('login').setAttribute('href', signedIn[2]);
     } else{
         document.getElementById('comments-prompt').innerHTML = 
-            '<a href='+signedIn[1]+'>Sign in here</a> to post a comment';
+            '<a style="color:navy; text-decoration:underline;" href='+signedIn[1]+'>Sign in here</a> to post a comment';
         document.getElementById('comments-form').style.display = 'none';
         document.getElementById('login').innerText = 'LOGIN';
         document.getElementById('login').setAttribute('href', signedIn[1]);
     }
   });
   getComments();
+}
+
+function getLogin2() {
+    console.log('entered getLogin()');
+  fetch('/login').then(response => response.json()).then(signedIn => {
+      console.log(signedIn);
+    if (signedIn[0] == 'true'){
+        document.getElementById('login').innerText = 'LOGOUT';
+        document.getElementById('login').setAttribute('href', signedIn[2]);
+    } else{
+        document.getElementById('login').innerText = 'LOGIN';
+        document.getElementById('login').setAttribute('href', signedIn[1]);
+    }
+  });
 }
 
 function getComments() {

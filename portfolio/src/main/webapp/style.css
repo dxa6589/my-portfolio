@@ -176,6 +176,7 @@ label{
     max-width: 10000px;*/
     border: 5px solid navy;
     cursor: pointer;
+    background-color: blanchedalmond;
 }
 .gallery a img:hover{
     border-color: blue;
@@ -187,6 +188,7 @@ label{
     color: navy;
     font-size: small;
     font-style: italic;
+    word-wrap: break-word;
 }
 
 #resume{
