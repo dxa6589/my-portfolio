@@ -23,17 +23,10 @@ public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     //throw new UnsupportedOperationException("TODO: Implement this method.");
 
-    /*
-      Given the meeting request (dureation and attendees) and all the other 
-      events that contain the attendees, return the times the meeting could
-      be held with no conflicts
-    */
-
-    //HashSet
     Collection<String> attendees = request.getAttendees();
     TreeMap<TimeRange, Event> attendeeEvents = new TreeMap<>(TimeRange.ORDER_BY_START);
 
-    //go through the events collection
+    //go through the events collection to find events with attendees from the request
     Iterator eventItr = events.iterator();
     while(eventItr.hasNext()) {
       Event event = (Event)eventItr.next();
@@ -68,22 +61,27 @@ public final class FindMeetingQuery {
     while (itr.hasNext()) {
       cursor = (Event)itr.next();
       TimeRange check = TimeRange.fromStartDuration(start, (int)request.getDuration());
-          System.out.println(cursor.getTitle());
+          System.out.println(cursor.getTitle() + " from " + cursor.getWhen().start() + " to " + cursor.getWhen().end() );
 
-      //If conflict is present befor duration is reached, 
+      //If conflict is present before duration is reached, 
       if (check.overlaps(cursor.getWhen())) {
         //restart from end of conflict
         start = cursor.getWhen().end();
-          System.out.println("event " + cursor.getTitle() + " start " + cursor.getWhen().start());
-        continue;
+        //check if it overlaps other events and set to the end of the last one
+          System.out.println("A event " + cursor.getTitle() + " start " + cursor.getWhen().start());
+        continue; 
       //Else, if there are no conflicts from start of day/end of last conflict to duration, 
       } else {
         //Add as timeRange ending at start of next conflict/end of day
         int end = cursor.getWhen().start();
-          System.out.println("event " + cursor.getTitle() + " start " + start + " end " + end);
-        TimeRange valid = TimeRange.fromStartEnd(start, end, false);
-        validTimes.add(valid);
-        start = cursor.getWhen().end();
+          System.out.println("B event " + cursor.getTitle() + " start " + start + " end " + end);
+        //checks if the next event starts after the current one ends
+        if (end > start){
+          TimeRange valid = TimeRange.fromStartEnd(start, end, false);
+          validTimes.add(valid);
+          start = cursor.getWhen().end();
+        }
+          System.out.println("C event " + cursor.getTitle() + " start " + start + " end " + end);
       }
     }
       System.out.println("start " + start + " duration " + request.getDuration());
