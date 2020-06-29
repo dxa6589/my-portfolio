@@ -14,10 +14,85 @@
 
 package com.google.sps;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    throw new UnsupportedOperationException("TODO: Implement this method.");
+    //throw new UnsupportedOperationException("TODO: Implement this method.");
+
+    /*
+      Given the meeting request (dureation and attendees) and all the other 
+      events that contain the attendees, return the times the meeting could
+      be held with no conflicts
+    */
+
+    //HashSet
+    Collection<String> attendees = request.getAttendees();
+    TreeMap<TimeRange, Event> attendeeEvents = new TreeMap<>(TimeRange.ORDER_BY_START);//new ArrayList<Event>();
+    //^^Find a way to make it a map with start times as values
+    //Or sort it 
+
+    //go through the events collection
+    Iterator eventItr = events.iterator();
+    while(eventItr.hasNext()) {
+      Event event = (Event)eventItr.next();
+      
+      //go through each event's attendees
+      Iterator attendeeItr = event.getAttendees().iterator();
+      while(attendeeItr.hasNext()){
+        String attendee = (String)attendeeItr.next();
+
+        //check if each attendee is in the attendees list for the new request
+        if (attendees.contains(attendee)) {
+          attendeeEvents.put(event.getWhen(), event);
+          break;
+        }
+      }
+    }
+
+    //At this point, attendeeEvents contains all events our guests are attending
+    //ie all events that we have to schedule around
+    //TimeRanges are all ranges that don't overlap attendeeEvents
+
+    //Iterate through attendeeEvents by start time
+
+    //While ! end of day
+      //If there are no conflicts from start of day/end of last conflict to duration, 
+        //Add as timeRange ending at start of next conflict/end of day
+      //Else, if conflict is present befor duration is reached, 
+        //restart from end of conflict
+
+      //What if one conflict overlaps another?
+
+    ArrayList<TimeRange> validTimes = new ArrayList<>();
+    Iterator itr = attendeeEvents.values().iterator();
+    Event cursor;
+    int start = 0;
+
+    //While ! last conflict
+    while (itr.hasNext()) {
+      cursor = (Event)itr.next();
+      TimeRange check = TimeRange.fromStartDuration(start, (int)request.getDuration());
+
+      //If conflict is present befor duration is reached, 
+      if (check.overlaps(cursor.getWhen())) {
+        //restart from end of conflict
+        start = cursor.getWhen().end();
+        break;
+      //Else, if there are no conflicts from start of day/end of last conflict to duration, 
+      } else {
+        //Add as timeRange ending at start of next conflict/end of day
+        Event temp = (Event)itr.next();
+        int end = temp.getWhen().start();
+        attendeeEvents.put(temp.getWhen(), temp);
+        TimeRange valid = TimeRange.fromStartEnd(start, end, false);
+        validTimes.add(valid);
+      }
+    }
+
+    return validTimes;
   }
 }
